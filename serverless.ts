@@ -29,7 +29,7 @@ const serverlessConfiguration: Serverless = {
   },
   functions: {
     hello: {
-      handler: 'handler.hello',
+      handler: 'src/drivers/prod/server/main.handler',
       events: [
         {
           http: {
