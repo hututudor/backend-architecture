@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import { createRouter } from '../../../app/router';
 import { initDatabase, mongoGenericRepository } from '../repository/mongo';
 
-dotenv.config();
+dotenv.config({ path: `.env.${process.env.ENV}` });
 
 const app = express();
 

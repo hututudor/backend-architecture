@@ -3,8 +3,11 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
+import dotenv from 'dotenv';
 
-import { router } from '../../../app/router';
+import { createRouter } from '../../../app/router';
+
+dotenv.config({ path: `.env.${process.env.ENV}` });
 
 const app = express();
 
@@ -13,7 +16,7 @@ app.use(helmet());
 app.use(morgan('tiny'));
 app.use(cors());
 
-app.use('/', router);
+app.use('/', createRouter({}));
 
 const server = awsServerlessExpress.createServer(app);
 
