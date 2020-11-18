@@ -21,6 +21,15 @@ export const mongoGenericRepository: GenericRepository = {
     );
   },
 
+  retrieveOneByFiled: (
+    collection: string,
+    fieldName: string
+  ) => async field => {
+    return mapDocumentToReturnValue(
+      await db.collection(collection).findOne({ [fieldName]: field })
+    );
+  },
+
   retrieveAll: (collection: string) => async () => {
     return (
       await db
